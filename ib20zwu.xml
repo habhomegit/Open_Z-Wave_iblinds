@@ -1,0 +1,41 @@
+<Product Revision="1" xmlns="https://github.com/OpenZWave/open-zwave">
+  <!-- Please refer to https://github.com/OpenZWave/open-zwave/wiki/Adding-Devices for instructions -->
+  <MetaData>
+    <MetaDataItem name="Name">iblinds</MetaDataItem>
+    <MetaDataItem name="Description">Z-Wave blind motor that installs out of sight in existing Horizontal (2 and 2 1/2 slatted-style) blind headrails. Use iBlinds to tilt the slats open, closed or use the value slider for precise positioning of the slat tilt angle></MetaDataItem>
+    <MetaDataItem name="OzwInfoPage">http://www.openzwave.com/device-database/XXXX:XXXX:XXXX</MetaDataItem>
+    <MetaDataItem name="ProductPage">https://myiblinds.com/></MetaDataItem>
+    <MetaDataItem name="ProductSupport">http://support.myiblinds.com/</MetaDataItem>
+    <MetaDataItem name="ProductManual">http://support.myiblinds.com/2019/05/12/user-guide/</MetaDataItem>
+    <MetaDataItem name="WakeupDescription"><!-- Short description on how to wake up the device if its battery powered --></MetaDataItem>
+    <MetaDataItem name="InclusionDescription">Follow the directions for your Z-Wave hub/controller to place it in the add for inclusion mode. Press the inclusion button (IN/EX) once and wait for the device to be discovered and joined to the Z-Wave network.  Follow the directions of your Z-Wave controller to uniquely identify your iblinds device.   (Ex: Bedroom iblinds).> </MetaDataItem>
+    <MetaDataItem name="ExclusionDescription">Follow the directions for your Z-Wave hub/controller to place it in the exclusion mode. Press the exclude button (IN/EX) once and wait for the iblinds device to be removed from the Z-Wave network.</MetaDataItem>
+  </MetaData>
+  <!-- Configuration Command Class - All Configuration Parameters should be entered into the section below -->
+  <CommandClass id="112">
+    <!-- Here is a List Value Sample -->
+    <Value genre="config" index="1" label="Auto Calibration Torque" max="5" min="1" size="1" type="list" value="1">
+      <Help>Changing the Auto Calibration torque will allow you to change the initial calibration torque. </Help>
+      <Item label="Calibrate using default torque " value="1"/>
+      <Item label="Reduce calibration torque by 1 factor" value="2"/>
+      <Item label="Reduce calibration torque by 2 factors" value="3"/>
+      <Item label="Increase calibration torque by .5 factor" value="4"/>
+      <Item label="Increase calibration torque by 1 factor" value="5"/>
+    </Value>
+  </CommandClass>
+   <!-- iblinds should not respond to SwitchMultilevel GET request while it is moving.   ** Disable for Domoticz which at current research time will not allow us to disable or delay GET request immediately following  SET-->
+  
+  <CommandClass id="38" getsupported="false"/>
+  <!--<CommandClass id="38">
+    <Compatibility>
+      <GetSupported>false</GetSupported>
+    </Compatibility>
+  </CommandClass>
+  -->
+  <!-- The Association Group Information -->
+  <CommandClass id="133">
+    <Associations num_groups="1">
+      <Group index="1" label="LifeLine" max_associations="5"/>
+    </Associations>
+  </CommandClass>
+</Product>
